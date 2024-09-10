@@ -38,10 +38,13 @@ button {
     align-items: center;
     justify-content: center;
     border-radius: 9999px; /* pill */
-    /* color: #42d3ff; */
 }
 
-.svg-icon {
-    fill: blue; /* Altera a cor de preenchimento */
-    stroke: green; /* Altera a cor das bordas */
+.play svg,
+.pause svg,
+.stop svg,
+.stopwatch svg,
+.sound-on svg,
+.sound-off svg {
+    fill: #42d3ff;
 }
