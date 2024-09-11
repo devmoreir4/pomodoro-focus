@@ -1,5 +1,5 @@
-import { Controls } from "./controls"
-import { Timer } from "./timer"
+import { Controls } from "./controls.js"
+import { Timer } from "./timer.js"
 
 const buttonPlay = document.querySelector('.play')
 const buttonPause = document.querySelector('.pause')
@@ -9,8 +9,6 @@ const buttonSoundOn = document.querySelector('.sound-on')
 const buttonSoundOff = document.querySelector('.sound-off')
 const displayMinutes = document.querySelector('.minutes')
 const displaySeconds = document.querySelector('.seconds')
-let minutes = Number(displayMinutes.textContent)
-let timerTimeOut
 
 const controls = Controls({
     buttonPause,
@@ -22,9 +20,7 @@ const controls = Controls({
 const timer = Timer({
     displayMinutes,
     displaySeconds,
-    timerTimeOut,
     resetControls: controls.reset,
-    minutes
 })
 
 buttonPlay.addEventListener('click', function() {
@@ -34,7 +30,7 @@ buttonPlay.addEventListener('click', function() {
 
 buttonPause.addEventListener('click', function() {
     controls.pause()
-    clearTimeout(timerTimeOut)
+    timer.hold()
 })
 
 buttonStop.addEventListener('click', function() {
@@ -59,7 +55,6 @@ buttonStopwatch.addEventListener('click', function() {
         return
     }
 
-    minutes = newMinutes
-    timer.updateDisplay(minutes, 0)
-    timer.updateMinutes(minutes)
+    timer.updateDisplay(newMinutes, 0)
+    timer.updateMinutes(newMinutes)
 })
