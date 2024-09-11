@@ -15,6 +15,14 @@ body {
     color: #fff;
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
+    display: grid;
+    min-height: 100vh;
+}
+
+main {
+    height: 50%;
+    align-self: end;
+    justify-self: center;
 }
 
 .hide {
@@ -27,9 +35,14 @@ button {
     cursor: pointer;
 }
 
+button svg {
+    width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+}
+
 #timer {
-    font-size: 8.8rem;
+    font-size: clamp(8.8rem, 4rem + 10vw, 8.8rem);
     display: flex;
+    margin-bottom: 1.6rem;
 }
 
 #controls {
@@ -37,14 +50,26 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 3.2rem;
     border-radius: 9999px; /* pill */
+    width: clamp(10rem, 10rem + 30vw, 22.8rem);
+    height: clamp(8rem, 5rem + 10vw, 10.8rem);
 }
 
 .play svg,
 .pause svg,
+.sound-on svg {
+    fill: #42d3ff;
+}
+
 .stop svg,
 .stopwatch svg,
-.sound-on svg,
 .sound-off svg {
-    fill: #42d3ff;
+    fill: #fff;
+}
+
+footer {
+    justify-self: end;
+    align-self: end;
+    padding: 0 4rem 3.2rem 0;
 }
