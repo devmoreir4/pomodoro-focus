@@ -25,9 +25,16 @@ export function Controls({
     }
 
     function getMinutes() {
-        let minutes = prompt('minutes?')
+        let minutes = prompt('select the amount of minutes:')
         if(!minutes) {
             return false
+        }
+
+        minutes = Number(minutes);
+
+        if (!Number.isInteger(minutes)) {
+            alert('Please enter a valid integer.');
+            return false;
         }
 
         return minutes
