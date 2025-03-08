@@ -105,6 +105,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  word-break: break-all;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .task-list li button {
