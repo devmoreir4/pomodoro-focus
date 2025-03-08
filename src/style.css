@@ -6,70 +6,146 @@
   box-sizing: border-box;
 }
 
-:root {
+html {
   font-size: 62.5%;
 }
 
 body {
-  background-color: #121214;
-  color: #fff;
-  font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
-  display: grid;
-  min-height: 100vh;
-}
-
-main {
-  height: 50%;
-  align-self: end;
-  justify-self: center;
-}
-
-.hide {
-  display: none;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-button svg {
-  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
-}
-
-#timer {
-  font-size: clamp(8.8rem, 4rem + 10vw, 8.8rem);
+  background-color: #2a7b9b;
+  color: #fff;
   display: flex;
-  margin-bottom: 1.6rem;
 }
 
-#controls {
-  background-color: hsla(194, 88%, 53%, 0.13);
+.container {
+  flex: 1;
+  padding: 4rem 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.tabs {
+  display: flex;
   justify-content: center;
-  gap: 3.2rem;
-  border-radius: 9999px; /* pill */
-  width: clamp(10rem, 10rem + 30vw, 22.8rem);
-  height: clamp(8rem, 5rem + 10vw, 10.8rem);
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.play svg,
-.pause svg,
-.sound-on svg {
-  fill: #42d3ff;
+.tab {
+  background-color: transparent;
+  border: 2px solid #fff;
+  font-size: 1.6rem;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.stop svg,
-.stopwatch svg,
-.sound-off svg {
-  fill: #fff;
+.tab:hover {
+  background-color: #fff;
+  color: #2a7b9b;
 }
 
-footer {
-  justify-self: end;
-  align-self: end;
-  padding: 0 4rem 3.2rem 0;
+.tab.active {
+  background-color: #fff;
+  color: #2a7b9b;
+}
+
+/* Timer */
+.time-display {
+  font-size: 8rem;
+  margin-bottom: 2rem;
+}
+
+.start-button {
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  border: none;
+  background-color: #42d3ff;
+  color: #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: filter 0.2s, background-color 0.2s;
+  margin-bottom: 3rem;
+}
+
+.start-button:hover {
+  filter: brightness(0.9);
+}
+
+/* Tasks */
+.tasks {
+  background-color: #3c8db3;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  width: 100%;
+  max-width: 40rem;
+}
+
+.tasks h3 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.task-list li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-list li button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.task-list li button:hover {
+  color: #ff6b6b;
+}
+
+.new-task-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.new-task-input {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+.add-task {
+  background-color: #fff;
+  color: #2a7b9b;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.add-task:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
 }

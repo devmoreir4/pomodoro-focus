@@ -10,60 +10,53 @@ export function Timer({
   resetControls,
 }: TimerProps) {
   let timerTimeout: number;
-  // Converte o conteúdo para número; se estiver vazio, pode ficar NaN, trate se necessário.
-  let minutes: number = Number(displayMinutes.textContent);
+  let minutes = Number(displayMinutes.textContent);
 
-  function updateDisplay(
-    newMinutes: number = minutes,
-    seconds: number = 0
-  ): void {
+  function updateDisplay(newMinutes = minutes, seconds = 0) {
     displayMinutes.textContent = String(newMinutes).padStart(2, "0");
     displaySeconds.textContent = String(seconds).padStart(2, "0");
   }
 
-  function reset(): void {
+  function updateMinutes(newMinutes: number) {
+    minutes = newMinutes;
+  }
+
+  function reset() {
     updateDisplay(minutes, 0);
     clearTimeout(timerTimeout);
   }
 
-  function countdown(): void {
+  function countdown() {
     timerTimeout = window.setTimeout(() => {
-      let seconds = Number(displaySeconds.textContent);
-      let currentMinutes = Number(displayMinutes.textContent);
-      const isFinished = currentMinutes <= 0 && seconds <= 0;
+      let sec = Number(displaySeconds.textContent);
+      let min = Number(displayMinutes.textContent);
 
-      updateDisplay(currentMinutes, 0);
-
+      const isFinished = min <= 0 && sec <= 0;
       if (isFinished) {
         resetControls();
-        updateDisplay();
-        // Aqui você pode chamar uma função de som para indicar o fim do timer.
+        updateDisplay(minutes, 0);
         return;
       }
 
-      if (seconds <= 0) {
-        seconds = 60;
-        --currentMinutes;
+      if (sec <= 0) {
+        sec = 60;
+        --min;
       }
 
-      updateDisplay(currentMinutes, seconds - 1);
+      updateDisplay(min, sec - 1);
       countdown();
     }, 1000);
   }
 
-  function updateMinutes(newMinutes: number): void {
-    minutes = newMinutes;
-  }
-
-  function hold(): void {
+  function hold() {
     clearTimeout(timerTimeout);
   }
 
   return {
-    countdown,
-    reset,
     updateDisplay,
     updateMinutes,
+    reset,
+    countdown,
     hold,
   };
 }

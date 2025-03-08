@@ -1,70 +1,94 @@
-import "./style.css";
-
-import Sounds from "./modules/sounds";
-import { Controls } from "./modules/controls";
 import { Timer } from "./modules/timer";
-import {
-  buttonPlay,
-  buttonPause,
-  buttonStop,
-  buttonStopwatch,
-  buttonSoundOn,
-  buttonSoundOff,
-  displayMinutes,
-  displaySeconds,
-} from "./modules/elements";
+import { TasksManager } from "./modules/tasks";
+import Sounds from "./modules/sounds";
+
+const pomodoroBtn = document.querySelector(".pomodoro") as HTMLButtonElement;
+const shortBreakBtn = document.querySelector(
+  ".shortBreak"
+) as HTMLButtonElement;
+const longBreakBtn = document.querySelector(".longBreak") as HTMLButtonElement;
+const startButton = document.querySelector(
+  ".start-button"
+) as HTMLButtonElement;
+
+const displayMinutes = document.querySelector(".minutes") as HTMLSpanElement;
+const displaySeconds = document.querySelector(".seconds") as HTMLSpanElement;
+
+const taskList = document.querySelector(".task-list") as HTMLUListElement;
+const addTaskButton = document.querySelector(".add-task") as HTMLButtonElement;
+const newTaskInput = document.querySelector(
+  ".new-task-input"
+) as HTMLInputElement;
 
 const sounds = Sounds();
-
-const controls = Controls({
-  buttonPause,
-  buttonPlay,
-  buttonStop,
-  buttonStopwatch,
-});
 
 const timer = Timer({
   displayMinutes,
   displaySeconds,
-  resetControls: controls.reset,
+  resetControls: () => {
+    sounds.timerEnd();
+  },
 });
 
-buttonPlay.addEventListener("click", () => {
-  controls.play();
-  timer.countdown();
-  sounds.pressButton();
-});
+timer.updateDisplay(25, 0);
+timer.updateMinutes(25);
 
-buttonPause.addEventListener("click", () => {
-  controls.pause();
-  timer.hold();
-  sounds.pressButton();
-});
+let isRunning = false;
 
-buttonStop.addEventListener("click", () => {
-  controls.reset();
+function toggleActiveTab(clickedBtn: HTMLButtonElement) {
+  [pomodoroBtn, shortBreakBtn, longBreakBtn].forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  clickedBtn.classList.add("active");
+}
+
+pomodoroBtn.addEventListener("click", () => {
+  toggleActiveTab(pomodoroBtn);
   timer.reset();
+  timer.updateDisplay(25, 0);
+  timer.updateMinutes(25);
+  isRunning = false;
+  startButton.textContent = "START";
+});
+
+shortBreakBtn.addEventListener("click", () => {
+  toggleActiveTab(shortBreakBtn);
+  timer.reset();
+  timer.updateDisplay(5, 0);
+  timer.updateMinutes(5);
+  isRunning = false;
+  startButton.textContent = "START";
+});
+
+longBreakBtn.addEventListener("click", () => {
+  toggleActiveTab(longBreakBtn);
+  timer.reset();
+  timer.updateDisplay(15, 0);
+  timer.updateMinutes(15);
+  isRunning = false;
+  startButton.textContent = "START";
+});
+
+startButton.addEventListener("click", () => {
   sounds.pressButton();
-});
 
-buttonSoundOff.addEventListener("click", () => {
-  buttonSoundOn.classList.remove("hide");
-  buttonSoundOff.classList.add("hide");
-  sounds.bgAudio.play();
-});
-
-buttonSoundOn.addEventListener("click", () => {
-  buttonSoundOn.classList.add("hide");
-  buttonSoundOff.classList.remove("hide");
-  sounds.bgAudio.pause();
-});
-
-buttonStopwatch.addEventListener("click", () => {
-  const newMinutes = controls.getMinutes();
-  if (!newMinutes) {
-    timer.reset();
-    return;
+  if (!isRunning) {
+    timer.countdown();
+    startButton.textContent = "PAUSE";
+    isRunning = true;
+  } else {
+    timer.hold();
+    startButton.textContent = "START";
+    isRunning = false;
   }
-  timer.updateDisplay(newMinutes, 0);
-  timer.updateMinutes(newMinutes);
+});
+
+const tasksManager = TasksManager({ taskList });
+
+addTaskButton.addEventListener("click", () => {
+  const taskText = newTaskInput.value.trim();
+  if (taskText !== "") {
+    tasksManager.addTask(taskText);
+    newTaskInput.value = "";
+  }
 });
