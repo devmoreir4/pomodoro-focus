@@ -13,9 +13,14 @@ export function Timer({
   let minutes = Number(displayMinutes.textContent);
 
   function updateDisplay(newMinutes = minutes, seconds = 0) {
-    displayMinutes.textContent = String(newMinutes).padStart(2, "0");
-    displaySeconds.textContent = String(seconds).padStart(2, "0");
-  }
+    const formattedMinutes = String(newMinutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
+
+    displayMinutes.textContent = formattedMinutes;
+    displaySeconds.textContent = formattedSeconds;
+
+    document.title = `${formattedMinutes}:${formattedSeconds} - Pomodoro Focus`;
+}
 
   function updateMinutes(newMinutes: number) {
     minutes = newMinutes;
