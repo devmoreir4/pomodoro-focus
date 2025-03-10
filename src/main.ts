@@ -1,24 +1,19 @@
+import {
+  pomodoroBtn,
+  shortBreakBtn,
+  longBreakBtn,
+  startButton,
+  displayMinutes,
+  displaySeconds,
+  timerTitle,
+  taskList,
+  addTaskButton,
+  newTaskInput,
+} from "./modules/elements";
+
 import { Timer } from "./modules/timer";
 import { TasksManager } from "./modules/tasks";
 import Sounds from "./modules/sounds";
-
-const pomodoroBtn = document.querySelector(".pomodoro") as HTMLButtonElement;
-const shortBreakBtn = document.querySelector(
-  ".shortBreak"
-) as HTMLButtonElement;
-const longBreakBtn = document.querySelector(".longBreak") as HTMLButtonElement;
-const startButton = document.querySelector(
-  ".start-button"
-) as HTMLButtonElement;
-
-const displayMinutes = document.querySelector(".minutes") as HTMLSpanElement;
-const displaySeconds = document.querySelector(".seconds") as HTMLSpanElement;
-
-const taskList = document.querySelector(".task-list") as HTMLUListElement;
-const addTaskButton = document.querySelector(".add-task") as HTMLButtonElement;
-const newTaskInput = document.querySelector(
-  ".new-task-input"
-) as HTMLInputElement;
 
 const sounds = Sounds();
 
@@ -49,6 +44,7 @@ pomodoroBtn.addEventListener("click", () => {
   timer.updateMinutes(25);
   isRunning = false;
   startButton.textContent = "START";
+  timerTitle.textContent = "Focus Timer";
 });
 
 shortBreakBtn.addEventListener("click", () => {
@@ -58,6 +54,7 @@ shortBreakBtn.addEventListener("click", () => {
   timer.updateMinutes(5);
   isRunning = false;
   startButton.textContent = "START";
+  timerTitle.textContent = "Short Break Timer";
 });
 
 longBreakBtn.addEventListener("click", () => {
@@ -67,11 +64,11 @@ longBreakBtn.addEventListener("click", () => {
   timer.updateMinutes(15);
   isRunning = false;
   startButton.textContent = "START";
+  timerTitle.textContent = "Long Break Timer";
 });
 
 startButton.addEventListener("click", () => {
   sounds.pressButton();
-
   if (!isRunning) {
     timer.countdown();
     startButton.textContent = "PAUSE";

@@ -20,7 +20,7 @@ export function Timer({
     displaySeconds.textContent = formattedSeconds;
 
     document.title = `${formattedMinutes}:${formattedSeconds} - Pomodoro Focus`;
-}
+  }
 
   function updateMinutes(newMinutes: number) {
     minutes = newMinutes;

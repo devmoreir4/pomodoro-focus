@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap");
 
 * {
   margin: 0;
@@ -8,12 +8,16 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   background-color: #8096b8;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Header */
@@ -38,23 +42,48 @@ body {
   align-items: center;
 }
 
+/* Timer */
+.timer-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.time-display {
+  font-size: 20rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.timer-controls {
+  width: 100%;
+  max-width: 56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 /* Tabs */
 .tabs {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .tab {
+  flex: 1;
+  max-width: 15rem;
   background-color: transparent;
   border: 2px solid #fff;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #fff;
-  padding: 0.8rem 1.2rem;
+  padding: 1rem 1.4rem;
+  white-space: nowrap;
   cursor: pointer;
   border-radius: 0.5rem;
   transition: background-color 0.2s, color 0.2s;
+  text-align: center;
 }
 
 .tab:hover {
@@ -67,23 +96,18 @@ body {
   color: #687ea0;
 }
 
-/* Timer */
-.time-display {
-  font-size: 18rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
 .start-button {
-  font-size: 2rem;
-  padding: 1rem 3rem;
+  font-size: 2.2rem;
+  padding: 1.2rem 3.8rem;
   border: none;
   background-color: #c9dfff;
   color: #fff;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: filter 0.2s, background-color 0.2s;
-  margin-bottom: 5rem;
+  display: block;
+  margin: 0 auto 4rem auto;
+  max-width: 15rem;
 }
 
 .start-button:hover {
@@ -120,13 +144,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   white-space: normal;
   overflow-wrap: break-word;
-
   word-break: break-all;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .task-list li button {
@@ -174,14 +194,11 @@ body {
 
 /* Footer */
 .footer {
-    width: 100%;
-    background-color: #2c3e50;
-    color: #fff;
-    text-align: center;
-    padding: 1.5rem 0;
-    position: relative;
-    bottom: 0;
-    left: 0;
+  width: 100%;
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
 }
 
 .footer p {

@@ -1,23 +1,30 @@
-const buttonPlay = document.querySelector(".play") as HTMLButtonElement;
-const buttonPause = document.querySelector(".pause") as HTMLButtonElement;
-const buttonStop = document.querySelector(".stop") as HTMLButtonElement;
-const buttonStopwatch = document.querySelector(
-  ".stopwatch"
+export const pomodoroBtn = document.querySelector(
+  ".pomodoro"
 ) as HTMLButtonElement;
-const buttonSoundOn = document.querySelector(".sound-on") as HTMLButtonElement;
-const buttonSoundOff = document.querySelector(
-  ".sound-off"
+export const shortBreakBtn = document.querySelector(
+  ".shortBreak"
 ) as HTMLButtonElement;
-const displayMinutes = document.querySelector(".minutes") as HTMLSpanElement;
-const displaySeconds = document.querySelector(".seconds") as HTMLSpanElement;
-
-export {
-  buttonPlay,
-  buttonPause,
-  buttonStop,
-  buttonStopwatch,
-  buttonSoundOn,
-  buttonSoundOff,
-  displayMinutes,
-  displaySeconds,
-};
+export const longBreakBtn = document.querySelector(
+  ".longBreak"
+) as HTMLButtonElement;
+export const startButton = document.querySelector(
+  ".start-button"
+) as HTMLButtonElement;
+export const displayMinutes = document.querySelector(
+  ".minutes"
+) as HTMLSpanElement;
+export const displaySeconds = document.querySelector(
+  ".seconds"
+) as HTMLSpanElement;
+export const timerTitle = document.querySelector(
+  ".timer-title"
+) as HTMLHeadingElement;
+export const taskList = document.querySelector(
+  ".task-list"
+) as HTMLUListElement;
+export const addTaskButton = document.querySelector(
+  ".add-task"
+) as HTMLButtonElement;
+export const newTaskInput = document.querySelector(
+  ".new-task-input"
+) as HTMLInputElement;
