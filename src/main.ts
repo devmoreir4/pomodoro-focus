@@ -89,3 +89,12 @@ addTaskButton.addEventListener("click", () => {
     newTaskInput.value = "";
   }
 });
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const loadingElement = document.getElementById("loading");
+    if (loadingElement) {
+      loadingElement.style.display = "none";
+    }
+  }, 400);
+});
