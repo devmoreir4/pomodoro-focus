@@ -1,3 +1,4 @@
 node_modules
 .vscode/*
-text.txt
+/dist
+src/scss/styles.css.map
