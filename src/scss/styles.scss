@@ -8,7 +8,6 @@
 
 :root {
   font-size: 62.5%;
-  height: 100%;
 }
 
 body {
@@ -52,6 +51,7 @@ body {
   font-size: 20rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .timer-controls {
@@ -144,7 +144,6 @@ body {
       justify-content: space-between;
       align-items: center;
       white-space: normal;
-      overflow-wrap: break-word;
       word-break: break-all;
 
       button {
@@ -268,16 +267,11 @@ body {
 
   p {
     font-size: 1.6rem;
-    color: #fff;
   }
 }
 
 // media queries
 @media (max-width: 768px) {
-  html {
-    font-size: 55%;
-  }
-
   .container {
     padding: 2rem 1rem;
   }
@@ -325,17 +319,19 @@ body {
 }
 
 @media (max-width: 570px) {
-  html {
-    font-size: 50%;
+  .header {
+    padding: 1rem;
+
+    .logo {
+      font-size: 1.8rem;
+    }
   }
 
   .time-display {
     font-size: 10rem;
-    text-align: center;
   }
   .timer-title {
     font-size: 1.8rem;
-    text-align: center;
   }
 
   .tabs {
@@ -348,14 +344,6 @@ body {
     padding: 0.6rem 1rem;
     width: 100%;
     text-align: center;
-  }
-
-  .start-button {
-    font-size: 2rem;
-    padding: 1.2rem 3.6rem;
-    display: block;
-    margin: 0 auto 4rem;
-    width: auto;
   }
 
   .tasks {
@@ -371,8 +359,6 @@ body {
     }
 
     .new-task-container {
-      display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
     }
 
